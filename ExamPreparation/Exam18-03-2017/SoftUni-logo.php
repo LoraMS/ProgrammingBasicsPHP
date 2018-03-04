@@ -1,28 +1,27 @@
 <?php
 
 $n = intval(readline());
-$middleTop = 1;
-$middle = 0;
-$middleBottom = 0;
+$sharp = 1;
+$dotsTop = (12*$n - 6) / 2;
+$dotsBottom = 3;
 
-for ($index = 1; $index <= 2 * $n; $index++) {
-    echo str_repeat(".", ((12 * $n - 5 - $middleTop) / 2)) . str_repeat("#", $middleTop) . str_repeat(".", ((12 * $n - 5 - $middleTop) / 2)) . "\n";
-    $middleTop += 6;
-    $middle = $middleTop;
+for ($index = 0; $index < 2*$n; $index++) {
+    echo str_repeat(".", $dotsTop).str_repeat("#", $sharp).str_repeat(".", $dotsTop)."\n";
+    $sharp += 6;
+    $dotsTop -= 3;
 }
 
-$middle -= 12;
-
-for ($index1 = 1; $index1 <= $n - 2; $index1++) {
-    echo "|" . str_repeat(".", ((12 * $n - 5 - $middle) / 2) - 1) . str_repeat("#", $middle) . str_repeat(".", ((12 * $n - 5 - $middle) / 2)) . "\n";
-    $middle -= 6;
-    $middleBottom = $middle;
+$sharp -= 12;
+for ($index1 = 0; $index1 < $n - 2; $index1++) {
+    echo "|".str_repeat(".", $dotsBottom - 1).str_repeat("#", $sharp).str_repeat(".", $dotsBottom)."\n";
+    $dotsBottom += 3;
+    $sharp -= 6;
 }
 
 for ($index2 = 1; $index2 <= $n; $index2++) {
     if($index2 === $n){
-        echo "@" . str_repeat(".", ((12 * $n - 5 - $middleBottom) / 2) - 1) . str_repeat("#", $middleBottom) . str_repeat(".", ((12 * $n - 5 - $middleBottom) / 2))."\n";
-    } else{
-        echo "|" . str_repeat(".", ((12 * $n - 5 - $middleBottom) / 2) - 1) . str_repeat("#", $middleBottom) . str_repeat(".", ((12 * $n - 5 - $middleBottom) / 2))."\n";
+        echo "@".str_repeat(".", $dotsBottom - 1).str_repeat("#", $sharp).str_repeat(".", $dotsBottom)."\n";
+    } else {
+        echo "|".str_repeat(".", $dotsBottom - 1).str_repeat("#", $sharp).str_repeat(".", $dotsBottom)."\n";
     } 
 }
