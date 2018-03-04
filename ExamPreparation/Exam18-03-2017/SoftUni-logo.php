@@ -8,7 +8,6 @@ $middleBottom = 0;
 for ($index = 1; $index <= 2 * $n; $index++) {
     echo str_repeat(".", ((12 * $n - 5 - $middleTop) / 2)) . str_repeat("#", $middleTop) . str_repeat(".", ((12 * $n - 5 - $middleTop) / 2)) . "\n";
     $middleTop += 6;
-
     $middle = $middleTop;
 }
 
