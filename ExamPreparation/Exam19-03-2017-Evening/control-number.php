@@ -30,3 +30,31 @@ if ($exit) {
 } else {
     echo "$counter moves";
 }
+
+
+/*
+
+<?php
+
+$n = intval(readline());
+$m = intval(readline());
+$controlNumber = intval(readline());
+$counter = 0;
+$sum = 0;
+$exit = false;
+
+for ($index = 1; $index <= $n; $index++) {
+    for ($index1 = $m; $index1 >= 1; $index1--) {
+        $counter ++;
+        $sum += $index * 2 + $index1 * 3;
+        if ($sum >= $controlNumber) {
+            echo "$counter moves\n";
+            echo "Score: $sum >= $controlNumber";
+            exit(0);
+        }
+    }
+}
+
+echo "$counter moves";
+
+ */
