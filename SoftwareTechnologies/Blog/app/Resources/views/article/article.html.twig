@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container body-content">
+        <div class="row">
+            <div class="col-md-12">
+                <article>
+                    <header>
+                        <h2>{{ article.title }}</h2>
+                    </header>
+
+                    <p>
+                        {{ article.content }}
+                    </p>
+
+                    <small class="author">
+                        create by {{ article.author }}
+                    </small>
+                    <br/>
+                    <footer>
+                        <div class="pull-right">
+                            <a class="btn btn-default btn-xs" href="{{ path('blog_index') }}">back &raquo;</a>
+                        </div>
+                        {% if app.user %}
+                            {% if app.user.role.name == 'ROLE_ADMIN'%}
+                                <div class="pull-right">
+                                    <a class="btn btn-danger btn-xs mr-2" href="{{ path('article_delete', {'id': article.id}) }}">Delete Post</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a class="btn btn-info btn-xs mr-2" href="{{ path('article_edit', {'id': article.id}) }}">Edit Post</a>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    </footer>
+                </article>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

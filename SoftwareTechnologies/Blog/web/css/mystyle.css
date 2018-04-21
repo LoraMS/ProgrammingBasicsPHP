@@ -1,0 +1,13 @@
+.mr-2{
+    margin-right: 15px;
+}
+
+.card{
+    width: 40%;
+    border: 1px solid #ecf0f1;
+    padding: 10px;
+}
+
+.profile-image{
+    margin-left: 100px;
+}
