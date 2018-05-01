@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container body-content">
+
+        <h3><u>Category: {{ category.name }}</u></h3>
+
+        <div class="row">
+            {% for article in category.articles %}
+                <div class="col-md-6">
+                    <article>
+                        <header>
+                            <h3>{{ article.title }}</h3>
+                        </header>
+                        <div>
+                            author: {{ article.author }}
+                        </div>
+                        <p>
+                            {% for tag in article.tags %}
+                                <a class="btn btn-default btn-xs" href="{{ path('articles_in_tag', {'name': tag.name}) }}">
+                                    {{ tag.name }}
+                                </a>
+                            {% endfor %}
+                        </p>
+
+                        <br />
+                        <footer>
+                            <div class="pull-left">
+                                <a class="btn btn-default btn-xs"
+                                   href="{{ path('article_view', {'id': article.id}) }}">Read more &raquo;</a>
+                            </div>
+                        </footer>
+                    </article>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
+

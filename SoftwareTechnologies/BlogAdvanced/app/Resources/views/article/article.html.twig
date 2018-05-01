@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container body-content">
+        <div class="row">
+            <div class="col-md-12">
+                <article>
+                    <header>
+                        <h2>{{ article.title }}</h2>
+                    </header>
+
+                    <p class="image-container">
+                        <a href="{{ asset('uploads/articles/' ~ article.coverPhoto) }}">
+                            <img src="{{ asset('uploads/articles/' ~ article.coverPhoto) }}" alt="article-image">
+                        </a>
+                    </p>
+
+                    <p>
+                        {{ article.content }}
+                    </p>
+
+                    <p>
+                        {% for tag in article.tags %}
+                            <a class="btn btn-default btn-xs" href="{{ path('articles_in_tag', {'name': tag.name}) }}">
+                                {{ tag.name }}
+                            </a>
+                        {% endfor %}
+                    </p>
+                    <small class="author">
+                        category {{ article.category }}
+                    </small>
+                    <br />
+                    <small class="author">
+                        create by {{ article.author }} on {{ article.dateAdded|date('d/m/Y') }}
+                    </small>
+                    <br />
+                    <br />
+                    <footer>
+                        <div class="pull-right">
+                            <a class="btn btn-default btn-xs" href="{{ path('blog_index') }}">back &raquo;</a>
+                        </div>
+                        {% if app.user %}
+                            {% if app.user.role.name == 'ROLE_ADMIN'%}
+                                <div class="pull-right">
+                                    <a class="btn btn-danger btn-xs mr-2" href="{{ path('article_delete', {'id': article.id}) }}">Delete Post</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a class="btn btn-info btn-xs mr-2" href="{{ path('article_edit', {'id': article.id}) }}">Edit Post</a>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    </footer>
+                </article>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

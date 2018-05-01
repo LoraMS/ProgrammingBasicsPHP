@@ -1,0 +1,41 @@
+.mr-2{
+    margin-right: 15px;
+}
+
+.card{
+    width: 40%;
+    border: 1px solid #ecf0f1;
+    padding: 10px;
+}
+
+.profile-image{
+    margin-left: 100px;
+}
+
+.style-select{
+    width: 60%;
+}
+
+.style-select select{
+    width: 100%;
+    padding: 10px;
+}
+
+.image-container{
+    text-align: right;
+    height: 400px;
+    width: 70%;
+}
+
+.image-container img{
+    border: 1px solid darkblue;
+    max-width: 100%;
+    height: 100%;
+}
+
+.edit-image-container{
+    text-align: center;
+}
+.edit-image-container img{
+    max-width: 200px;
+}

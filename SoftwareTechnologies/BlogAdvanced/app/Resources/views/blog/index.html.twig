@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container body-content">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Categories</h3>
+            </div>
+            <ul class="list-group">
+                {% for category in categories %}
+                <li class="list-group-item">
+                    <a href="{{ path('articles_in_category', {id: category.id}) }}">
+                        {{ category.name }}( {{ category.articles.count }} )
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="row">
+            {% for article in articles %}
+                <div class="col-md-6">
+                    <article>
+                        <header>
+                            <h2>{{ article.title }}</h2>
+                        </header>
+
+                        <p>
+                            {{ article.summary }}
+                        </p>
+
+                        <p>
+                            {% for tag in article.tags %}
+                                <a class="btn btn-default btn-xs" href="{{ path('articles_in_tag', {'name': tag.name}) }}">
+                                    {{ tag.name }}
+                                </a>
+                            {% endfor %}
+                        </p>
+
+                        <small class="author">
+                            create by {{ article.author }} on {{ article.dateAdded|date('d/m/Y') }}
+                        </small>
+
+                        <footer>
+                            <div class="pull-right">
+                                <a class="btn btn-default btn-xs"
+                                   href="{{ path('article_view', {'id': article.id}) }}">Read more &raquo;</a>
+                            </div>
+                        </footer>
+                    </article>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+{% endblock %}
