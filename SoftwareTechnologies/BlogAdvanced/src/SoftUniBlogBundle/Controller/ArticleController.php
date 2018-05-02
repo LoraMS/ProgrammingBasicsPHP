@@ -110,17 +110,17 @@ class ArticleController extends Controller
                 $tagsToSave->add($tag);
             }
 
-//            /** @var UploadedFile $file */
-//            $file = $article->getCoverPhoto();
-//
-//            $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
-//
-//            $file->move(
-//                $this->getParameter('articles_directory'),
-//                $fileName
-//            );
-//
-//            $article->setCoverPhoto(new File($this->getParameter('articles_directory').'/'.$article->getCoverPhoto()));
+            /** @var UploadedFile $file */
+            $file = $article->getCoverPhoto();
+
+            $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
+
+            $file->move(
+                $this->getParameter('articles_directory'),
+                $fileName
+            );
+
+            $article->setCoverPhoto($fileName);
             $article->setTags($tagsToSave);
 
             $em->merge($article);

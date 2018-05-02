@@ -19,7 +19,6 @@ class ArticleType extends AbstractType
     {
         $builder->add('title', TextType::class)
             ->add('content', TextType::class)
-            ->add('dateAdded', TextType::class)
             ->add('category', EntityType::class, [
               'class' => Category::class
     ])
